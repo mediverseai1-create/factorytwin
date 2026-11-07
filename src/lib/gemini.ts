@@ -21,7 +21,7 @@ type Opts = { system?: string; prompt: string; json?: boolean; temperature?: num
 export async function geminiGenerate({ system, prompt, json, temperature = 0.2 }: Opts): Promise<string> {
   const key = process.env.GEMINI_API_KEY;
   if (!key) throw new GeminiError("Gemini is not configured on this server (GEMINI_API_KEY missing).", 503);
-  const model = process.env.GEMINI_MODEL || "gemini-2.0-flash";
+  const model = process.env.GEMINI_MODEL || "gemini-3.8-flash";
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), 55000);
   try {
